@@ -1,0 +1,69 @@
+.stampImage {
+    display: flex;
+    border-radius: 50%;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nameInquire {
+    display: flex;
+    width: 80%;
+    height: 100px;
+    background-color: yellow;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.info {
+    display: flex;
+    width: 80%;
+    height: 100px;
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.recentVisit {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: skyblue;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.totalSales {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: skyblue;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.stampContainer {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: brown;
+    margin: 0 auto;
+}
+
+.stampAdd {
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: green;
+    margin: 0 auto;
+}
