@@ -2,8 +2,8 @@
     display: flex;
     border-radius: 50%;
     background-color: red;
-    width: 100px;
-    height: 100px;
+    width: 25%;
+    height: 50px;
     justify-content: center;
     align-items: center;
 }
@@ -51,6 +51,7 @@
 
 .stampContainer {
     width: 80%;
+    /* height: 200px; */
     display: flex;
     flex-wrap: wrap;
     background-color: brown;
