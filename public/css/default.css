@@ -1,6 +1,8 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #containerFull {
@@ -10,4 +12,18 @@ body {
     width: 500px;
     height: 800px;
     background-color: gray;
+    /* padding: 0; */
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

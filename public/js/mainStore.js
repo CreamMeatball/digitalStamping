@@ -16,7 +16,7 @@ function stampImageHeight() {
     var stampContainerWidth = $('.stampContainer').width();
     console.log(stampContainerWidth);
     var stampImage = $('.stampImage');
-    stampImage.height(stampContainerWidth/stampWidthNumber);
+    stampImage.height(stampContainerWidth*0.8/stampWidthNumber);
     console.log(stampImage.height());
 
 }
