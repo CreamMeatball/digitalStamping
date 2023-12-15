@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mainCustomer</title>
+    <link href="css/default.css" rel="stylesheet"/>
+    <link href="css/mainCustomer.css" rel="stylesheet"/>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/mainCustomer.js"></script>
 </head>
 <body>
-    
+    <section>
+        <div class="header">
+            <!-- header content -->
+        </div>
+    </section>
+    <div id="containerFull">
+        <hr width="80%">
+        <section>
+            <div class="nameInquire">
+                <div> nickname님 반갑습니다! </div>
+                <form action="/mainCustomer" method="get">
+                    <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+                    <input type="text" id="storeName" name="storeName" placeholder="가게명">
+                    <input type="submit" value="조회" id="nameInquireButton">
+                </form>
+            </div>
+        </section>
+        <hr width="80%">
+        <section>
+            <div class="info">
+                <div class="searchedNickname">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div style="text-align: center;"> storeName 가게의 스탬프입니다. </div>
+            <div class="stampContainer">
+                <div class="stampImage"></div>
+                <div class="stampImage"></div>
+                <div class="stampImage"></div>
+                <div class="stampImage"></div>
+
+                <div class="stampImage"></div>
+                <div class="stampImage"></div>
+                <div class="stampImage"></div>
+                <div class="stampImage"></div>
+            </div>
+        </section>
+
+    </div>
+    <section>
+        <div class="footer">
+            <!-- footer content -->
+            
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.7457336433786!2d127.07490637636057!3d37.6316683720218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbbd569641237%3A0x7b8fe3317caedc65!2z7ISc7Jq46rO87ZWZ6riw7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1700707178656!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </div>
+    </section>
 </body>
 </html>

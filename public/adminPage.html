@@ -4,8 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>adminPage</title>
+    <link href="css/default.css" rel="stylesheet"/>
+    <link href="css/adminPage.css" rel="stylesheet"/>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- <script src="js/mainStore.js"></script> -->
 </head>
 <body>
-    
+    <section>
+        <div class="header">
+            <!-- header content -->
+            <div onClick="location.href='/logoutStore'" style="cursor:pointer" class="headerButton" id="logoutPage"> 로그아웃 </div>
+            <div onClick="location.href='/mainStore'" style="cursor:pointer" class="headerButton" id="stampAddPage"> 가게 </div>
+            <div onClick="location.href='/adminPage'" style="cursor:pointer" class="headerButton" id="adminPage"> 관리 </div>
+            <div onClick="location.href='/statistic'" style="cursor:pointer" class="headerButton" id="statisticPage"> 통계 </div>
+        </div>
+    </section>
+    <div id="containerFull">
+        <div id="editForm">
+            <p>가게 정보 수정하기</p>
+            <hr width="80%">
+            <form action="/adminPage" method="post">
+                <div>가게명</div> <input type="text" id="storeName" class="editInput" name="storeName" placeholder="카페명">
+                <div>가게로고</div> <input type="text" id="storeLogo" class="editInput" name="storeLogo" placeholder="가게 로고">
+                <div>가게주소</div><input type="text" id="storeAddress" class="editInput" name="storeAddress" placeholder="서울특별시 강동구 도장로 999">
+                <div>스탬프 달성 목표 개수</div> <input type="number" id="stampMax" class="editInput" name="stampMax" placeholder="8">
+                <div>스탬프 달성 혜택</div> <input type="text" id="stampEvent" class="editInput" name="stampEvent" placeholder="5000원 이하 메뉴 무료 제공!">
+                <div>스탬프 이미지</div> <input type="text" id="stampImage" class="editInput" name="stampImage" placeholder="스탬프 이미지">
+                <input type="submit" value="변경" id="editButton">
+            </form>
+            <hr width="80%">
+        </div>
+    </div>
+    <section>
+        <div class="footer">
+        </div>
+    </section>
 </body>
 </html>

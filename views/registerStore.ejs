@@ -4,21 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register for store</title>
+    <link href="css/default.css" rel="stylesheet"/>
+    <link href="css/registerStore.css" rel="stylesheet"/>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- <script src="js/mainCustomer.js"></script> -->
 </head>
 <body>
-    register for store
-
-    <form action="/registerStore" method="post">
-        id <input type="text" id="id" name="id" placeholder="id">
-        password <input type="text" id="password" name="password" placeholder="password">
-        storeName <input type="text" id="storeName" name="storeName" placeholder="storeName">
-        storeLogo <input type="text" id="storeLogo" name="storeLogo" placeholder="storeLogo">
-        storeAddress <input type="text" id="storeAddress" name="storeAddress" placeholder="storeAddress">
-        stampMax <input type="number" id="stampMax" name="stampMax" placeholder="stampMax">
-        stampEvent <input type="text" id="stampEvent" name="stampEvent" placeholder="stampEvent">
-        stampImage <input type="text" id="stampImage" name="stampImage" placeholder="stampImage">
-        <input type="submit" value="조회" id="registerButton">
-    </form>
-    
+    <section>
+        <div class="header">
+            <!-- header content -->
+            <div onClick="location.href='/loginStore'" style="cursor:pointer" class="headerButton" id="loginPage"> 로그인 </div>
+            <div onClick="location.href='/mainStore'" style="cursor:pointer" class="headerButton" id="stampAddPage"> 가게 </div>
+            <div onClick="location.href='/adminPage'" style="cursor:pointer" class="headerButton" id="adminPage"> 관리 </div>
+            <div onClick="location.href='/statistic'" style="cursor:pointer" class="headerButton" id="statisticPage"> 통계 </div>
+        </div>
+    </section>
+    <div id="containerFull">
+        <div id="registerForm">
+            <p>가게 매니저 가입하기</p>
+            <hr width="80%">
+            <form action="/registerStore" method="post">
+                <div>아이디</div> <input type="text" id="id" class="registerInput" name="id" placeholder="abc1234">
+                <div>비밀번호</div> <input type="text" id="password" class="registerInput" name="password" placeholder="qwer1234">
+                <div>가게명</div> <input type="text" id="storeName" class="registerInput" name="storeName" placeholder="카페명">
+                <div>가게로고</div> <input type="text" id="storeLogo" class="registerInput" name="storeLogo" placeholder="가게 로고">
+                <div>가게주소</div><input type="text" id="storeAddress" class="registerInput" name="storeAddress" placeholder="서울특별시 강동구 도장로 999">
+                <div>스탬프 달성 목표 개수</div> <input type="number" id="stampMax" class="registerInput" name="stampMax" placeholder="8">
+                <div>스탬프 달성 혜택</div> <input type="text" id="stampEvent" class="registerInput" name="stampEvent" placeholder="5000원 이하 메뉴 무료 제공!">
+                <div>스탬프 이미지</div> <input type="text" id="stampImage" class="registerInput" name="stampImage" placeholder="스탬프 이미지">
+                <input type="submit" value="조회" id="registerButton">
+            </form>
+            <hr width="80%">
+        </div>
+    </div>
+    <section>
+        <div class="footer">
+            
+        </div>
+    </section>
 </body>
+<script>
+<% if (alertMessage && alertMessage.length > 0) { %>
+    alert("<%= alertMessage %>");
+<% } %>
+</script>
 </html>

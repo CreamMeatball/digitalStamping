@@ -1,16 +1,3 @@
-
-.headerButton {
-    /* background-color: green; */
-    padding-left: 30px;
-    padding-right: 30px;
-
-    border-left: 1px solid black;
-}
-
-#statisticPage {
-    border-right: 1px solid black;
-}
-
 .nameInquire {
     display: flex;
     width: 80%;

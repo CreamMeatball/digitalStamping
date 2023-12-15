@@ -13,10 +13,14 @@
     <section>
         <div class="header">
             <!-- header content -->
-            <div class="headerButton" id="loginPage"> 로그인 </div>
-            <div class="headerButton" id="stampAddPage"> 메인페이지 </div>
-            <div class="headerButton" id="adminPage"> 관리 </div>
-            <div class="headerButton" id="statisticPage"> 통계 </div>
+            <% if (!storeName) { %>
+            <div onClick="location.href='/loginStore'" style="cursor:pointer" class="headerButton" id="loginPage"> 로그인 </div>
+            <% } else { %>
+                <div onClick="location.href='/logoutStore'" style="cursor:pointer" class="headerButton" id="logoutPage"> 로그아웃 </div>
+            <% } %>
+            <div onClick="location.href='/mainStore'" style="cursor:pointer" class="headerButton" id="stampAddPage"> 가게 </div>
+            <div onClick="location.href='/adminPage'" style="cursor:pointer" class="headerButton" id="adminPage"> 관리 </div>
+            <div onClick="location.href='/statistic'" style="cursor:pointer" class="headerButton" id="statisticPage"> 통계 </div>
         </div>
     </section>
     <div id="containerFull">
@@ -96,7 +100,7 @@
     <section>
         <div class="footer">
             <!-- footer content -->
-            [ footer content ]
+            
         </div>
     </section>
 </body>

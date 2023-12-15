@@ -10,72 +10,70 @@
     <script src="js/mainCustomer.js"></script>
 </head>
 <body>
-    <body>
-        <section>
-            <div class="header">
-                <!-- header content -->
-            </div>
-        </section>
-        <div id="containerFull">
-            <hr width="80%">
-            <section>
-                <div class="nameInquire">
-                    <form action="/mainCustomer" method="get">
-                        <input type="text" id="nickname" name="nickname" placeholder="닉네임">
-                        <input type="text" id="storeName" name="storeName" placeholder="가게명">
-                        <input type="submit" value="조회" id="nameInquireButton">
-                    </form>
-                </div>
-            </section>
-            <hr width="80%">
-            <section>
-                <div class="info">
-                    <div class="searchedNickname">
-                        <% if (nickname && nickname.length > 0) { %>
-                            <p>안녕하세요 <%= nickname %> 님. </p>
-                        <% } else { %>
-                            <p>닉네임과 가게명을 검색해주세요!</p>
-                        <% } %>  
-                        <% if (storeName && storeName.length > 0) { %>
-                            <p><%= storeName %> 가게의 스탬프 개수입니다. </p>
-                        <% } else { } %>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div class="stampContainer">
-                    <% for (var i = 0; i < stampNumber; i++) { %>
-                        <div class="stampImage"></div>
-                    <% } %>
-                </div>
-            </section>
-            <% if (nickname && nickname.length > 0) { %>
-            <hr width="80%">
-            <% } else { } %>
+    <section>
+        <div class="header">
+            <!-- header content -->
         </div>
+    </section>
+    <div id="containerFull">
+        <hr width="80%">
         <section>
-            <div class="footer">
-                <!-- footer content -->
-                [ footer content ]
-                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.7457336433786!2d127.07490637636057!3d37.6316683720218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbbd569641237%3A0x7b8fe3317caedc65!2z7ISc7Jq46rO87ZWZ6riw7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1700707178656!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <div class="nameInquire">
+                <form action="/mainCustomer" method="get">
+                    <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+                    <input type="text" id="storeName" name="storeName" placeholder="가게명">
+                    <input type="submit" value="조회" id="nameInquireButton">
+                </form>
             </div>
         </section>
-    </body>
-    <script>
-        <% if (registerMessage && registerMessage.length > 0) { %>
-            console.log("ready to create new user alert");
-            var userResponse = confirm("<%= regiterMessage %>");
-            if (userResponse) {
-                console.log("User clicked 'OK', create new user.");
-                window.location.href = '/mainCustomer/registerCustomer/?nickname=<%= nickname %>';
-            } else {
-                console.log("User clicked 'Cancel'.");
-                window.location.href = '/mainCustomer'
-            }
-        <% } %>
-        <% if (alertMessage && alertMessage.length > 0) { %>
-            alert("<%= alertMessage %>");
-        <% } %>
-    </script>
+        <hr width="80%">
+        <section>
+            <div class="info">
+                <div class="searchedNickname">
+                    <% if (nickname && nickname.length > 0) { %>
+                        <p>안녕하세요 <%= nickname %> 님. </p>
+                    <% } else { %>
+                        <p>닉네임과 가게명을 검색해주세요!</p>
+                    <% } %>  
+                    <% if (storeName && storeName.length > 0) { %>
+                        <p><%= storeName %> 가게의 스탬프 개수입니다. </p>
+                    <% } else { } %>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="stampContainer">
+                <% for (var i = 0; i < stampNumber; i++) { %>
+                    <div class="stampImage"></div>
+                <% } %>
+            </div>
+        </section>
+        <% if (nickname && nickname.length > 0) { %>
+        <hr width="80%">
+        <% } else { } %>
+    </div>
+    <section>
+        <div class="footer">
+            <!-- footer content -->
+            
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.7457336433786!2d127.07490637636057!3d37.6316683720218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbbd569641237%3A0x7b8fe3317caedc65!2z7ISc7Jq46rO87ZWZ6riw7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1700707178656!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </div>
+    </section>
 </body>
+<script>
+    <% if (registerMessage && registerMessage.length > 0) { %>
+        console.log("ready to create new user alert");
+        var userResponse = confirm("<%= registerMessage %>");
+        if (userResponse) {
+            console.log("User clicked 'OK', create new user.");
+            window.location.href = '/mainCustomer/registerCustomer/?nickname=<%= nickname %>';
+        } else {
+            console.log("User clicked 'Cancel'.");
+            window.location.href = '/mainCustomer'
+        }
+    <% } %>
+    <% if (alertMessage && alertMessage.length > 0) { %>
+        alert("<%= alertMessage %>");
+    <% } %>
+</script>
 </html>

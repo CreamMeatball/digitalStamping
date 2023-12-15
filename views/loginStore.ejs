@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login for store owner</title>
     <link href="css/default.css" rel="stylesheet"/>
-    <!-- <link href="css/mainStore.css" rel="stylesheet"/> -->
+    <link href="css/loginStore.css" rel="stylesheet"/>
     <script src="js/jquery-3.7.1.min.js"></script>
     <!-- <script src="js/mainStore.js"></script> -->
 </head>
@@ -13,22 +13,33 @@
     <section>
         <div class="header">
             <!-- header content -->
+            <div onClick="location.href='/loginStore'" style="cursor:pointer" class="headerButton" id="loginPage"> 로그인 </div>
+            <div onClick="location.href='/mainStore'" style="cursor:pointer" class="headerButton" id="stampAddPage"> 가게 </div>
+            <div onClick="location.href='/adminPage'" style="cursor:pointer" class="headerButton" id="adminPage"> 관리 </div>
+            <div onClick="location.href='/statistic'" style="cursor:pointer" class="headerButton" id="statisticPage"> 통계 </div>
         </div>
     </section>
     <div id="containerFull">
-        <a href="/registerStore" id="registerButton">Register</a>
-        Login
-        <form action="/loginStore/login" method="post">
-            id <input type="text" id="id" name="id" placeholder="id">
-            password <input type="text" id="password" name="password" placeholder="password">
-            <input type="submit" value="조회" id="loginButton">
-        </form>
+        <div id="loginForm">
+            <p>가게 매니저 로그인</p>
+            <hr width="80%">
+            <form action="/loginStore/login" method="post">
+                <div>아이디</div> <input type="text" class="loginInput" id="id" name="id" placeholder="abc1234">
+                <div>비밀번호</div> <input type="text" class="loginInput" id="password" name="password" placeholder="qwer1234">
+                <input type="submit" value="조회" id="loginButton">
+            </form>
+            <hr width="80%">
+            <a href="/registerStore" id="registerButton">회원가입</a>
+        </div>
     </div>
     <section>
         <div class="footer">
-            <!-- footer content -->
-            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.7457336433786!2d127.07490637636057!3d37.6316683720218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbbd569641237%3A0x7b8fe3317caedc65!2z7ISc7Jq46rO87ZWZ6riw7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1700707178656!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         </div>
     </section>
 </body>
+<script>
+    <% if (alertMessage && alertMessage.length > 0) { %>
+        alert("<%= alertMessage %>");
+    <% } %>
+</script>
 </html>

@@ -10,9 +10,10 @@ moment.tz.setDefault('Asia/Seoul');
 // task 나열
 exports.get = async function(req, res) {
     console.log('---loginStore---');
+    var alertMessage = "";
     try {
         const store = await Store.find({});
-        return res.render('loginStore', { store : store} );
+        return res.render('loginStore', { store : store, alertMessage : "" } );
     } catch (err) {
         console.error('loginStore failed', err);
         res.status(500).send('Internal Server Error');
