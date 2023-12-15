@@ -29,24 +29,16 @@
             </div>
         </section>
         <section>
+            <% if (storeName) { %>
+                <p><%= storeName %> 님 환영합니다.</p>
+            <% } else { } %>  
             <div class="info">
-                <!-- <div class="recentVisit">
-                    <div id="recentVisitText">
-                        최근 방문 일자 : 
-                    </div>
-                    <div id="recentVisitDate">
-                            2023.10.31
-                    </div>
+                <div class="searchedNickname">
+                    <% if (nickname && nickname.length > 0) { %>
+                        <p>안녕하세요 <%= nickname %> 님 </p>
+                    <% } else { } %>  
                 </div>
-                <div class="totalSales">
-                    <div id="totalSalesText">
-                        총 매출액 : 
-                    </div>
-                    <div id="totalSalesPrice">
-                        57,000 (원)
-                    </div>
-                </div> -->
-                <div class="purchaseHistory">
+                <!-- <div class="purchaseHistory">
                     <div id="purchaseHistoryTitle">
                         구매 내역 : 
                     </div>
@@ -61,7 +53,7 @@
                             <p>구매내역 없음</p>
                         <% } %>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <section>

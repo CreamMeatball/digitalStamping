@@ -2,65 +2,36 @@ const Store = require('../models/store');
 const Customer = require('../models/customer');
 
 
-
-
-
 // 한국표준시 세팅
 var moment = require('moment-timezone');
 moment.tz.setDefault('Asia/Seoul');
 
-// task 나열
-// exports.get = async function(req, res) {
-//     console.log('---store---');
-//     try {
-//         // const store = await store.find({});
-//         res.render('mainStore', { purchaseHistory : [] });
-//     } catch (err) {
-//         console.error('mainStore page get failed: ', err);
-//         res.status(500).send('Internal Server Error');
-//     }
-// }
 
 exports.get = async function(req, res) {
     console.log('---store---');
     const nickname = req.query.nickname;
+    const isLogin = req.session.isLogin;
+    const storeId = req.session.storeId;
+    const storeName = req.session.storeName;
+    // mainStore?storeId=${store._id}&storeName=${store.name}`
     try {
         if (nickname) {
             const customer = await Customer.findOne({ nickname : nickname });
             if (customer) {
                 console.log('successfully find customer [', nickname, ']');
-                return res.render('mainStore', { purchaseHistory : customer.purchaseHistory });
+                return res.render('mainStore', { isLogin : isLogin, storeId : storeId, storeName : storeName, nickname : customer.nickname, purchaseHistory : customer.purchaseHistory });
             } else {
                 console.log('cannot find customer [', nickname, ']');
             }
         }
 
-        res.render('mainStore', { purchaseHistory : [] });
+        res.render('mainStore', { isLogin : isLogin, storeId : storeId, storeName : storeName,nickname : [], purchaseHistory : [] });
 
     } catch (err) {
         console.error('mainStore page get failed: ', err);
         res.status(500).send('Internal Server Error');
     }
 }
-
-// exports.findCustomer = async function(req, res) {
-//     console.log('---mainStore find Customer---');
-//     const nickname = req.body.nickname;
-//     try {
-//         const customer = await Customer.findOne({ nickname });
-//         if (customer) {
-//             console.log('find customer data success');
-//             res.render('mainStore', { purchaseHistory : customer.purchaseHistory });
-//         }
-//         else {
-//             console.log('find customer data failed - cant find customer who has that nickname');
-//             res.render('mainStore', { purchaseHistory : [] });
-//         }
-//     } catch (err) {
-//         console.error('find customer failed at all : ', err);
-//         res.status(500).send('Internal Server Error');
-//     }
-// };
 
 exports.stampAdd = async function(req, res) {
     // try {

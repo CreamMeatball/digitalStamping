@@ -2,10 +2,21 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 
 const app = express();
+
+app.use(cookieParser());
+
+app.use(session({
+  secret: "@XDF@#$#R!@!@!@##!@", 
+  resave: false, 
+  saveUninitialized: false,
+}));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -23,9 +34,9 @@ app.listen(8080, function() {
     console.log('enter in 8080');
 });
 
-app.get('/mainStore', function(req, res) {
-    res.sendFile(__dirname + '/public' + '/mainStore.html')
-})
+// app.get('/mainStore', function(req, res) {
+//     res.sendFile(__dirname + '/public' + '/mainStore.html')
+// })
 
 // mongodb
 
@@ -43,7 +54,6 @@ db.on('error', function() {
 db.once('open', function() {
     console.log('Connection Successful!');
 });
-
 
 // test DB input
 
@@ -118,76 +128,3 @@ async function insertTestData() {
 insertTestData();
 
 
-
-// // customer Schema 생성
-// const customer = mongoose.Schema({
-//     nickname : String,
-//     password : {type : String, min : 6, max : 20},
-//     address : String,
-//     age : Number,
-//     visitedStore : [String],
-//     storeStamp : [Number],
-//     storeStampComplete : [Number],
-//     purchaseHistory : [{date : { type : Date, default : Date.now }, price : Number }]
-// });
-
-// // store Schema 생성
-// const store = mongoose.Schema({
-//     id : String,
-//     password : {type : String, min : 6, max : 20},
-//     storeName : String,
-//     storeLogo : String,
-//     storeAddress : String,
-//     stampMax : Number,
-//     stampEvent : String,
-//     stampImage : [String],
-// })
-
-// // customer Schema를 통해 model로 컴파일
-// const Customer = mongoose.model('Customer', customer);
-
-// // model Structure로 새로운 customer 객체 생성
-// var newCustomer1 = new Customer({
-//     name:'Park Cheol Hyun',
-//     password: '1234',
-//     address: '서울특별시 강동구 상일동',
-//     age: 24,
-//     visitedStore : ['강동 에그타르트', '카페 482'],
-//     storeStamp : [3, 5],
-//     storeStampComplete : [1, 2],
-//     purchaseHistory : [{price : 35000}, {price : 24000}]
-// });
-
-// // customer 데이터 저장
-// newCustomer1.save()
-// .then(data => {
-//     console.log('Save complete!', data);
-// })
-// .catch(error => {
-//     console.log('Error occurred!', error);
-// })
-
-// // store Schema를 통해 model로 컴파일
-// const Store = mongoose.model('Store', store);
-
-// // model Structure로 새로운 store 객체 생성
-// var newStore1 = new Store({
-//     id : 'store1',
-//     password : '1234',
-//     storeName : '강동 에그타르트',
-//     storeLogo : 'Logo1',
-//     storeAddress : '서울특별시 강동구 상일로 123',
-//     stampMax : 8,
-//     stampEvent : '결제 시 5000원 할인!',
-//     stampImage : ['stampImage1', 'stampImage2'],
-// })
-
-
-// // customer 데이터 저장
-// newStore1.save()
-// .then(data => {
-//     console.log('Save complete!', data);
-// })
-// .catch(error => {
-//     console.log('Error occurred!', error);
-// })
