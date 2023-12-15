@@ -48,23 +48,6 @@
                         <p>손님 <%= nickname %>님, 반갑습니다. </p>
                     <% } else { } %>
                 </div>
-                <!-- <div class="purchaseHistory">
-                    <div id="purchaseHistoryTitle">
-                        구매 내역 : 
-                    </div>
-                    <div id="purchaseHistoryValue">
-                        <% if (purchaseHistory && purchaseHistory.length > 0) { %>
-                            <ul>
-                                <% purchaseHistory.forEach(history => { %>
-                                    <li>Store: <%= history.store %> Date: <%= history.date %>, Price: <%= history.price %></li>
-                                <% }); %>
-                            </ul>
-                        <% } else { %>
-                            <p>구매내역 없음</p>
-                        <% } %>
-                    </div>
-                </div> -->
-            </div>
         </section>
         <% if (isLogin) { %>
             
