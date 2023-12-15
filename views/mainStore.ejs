@@ -13,30 +13,36 @@
     <section>
         <div class="header">
             <!-- header content -->
-            <div class="headerButton" id="loginPage">[ login ]</div>
-            <div class="headerButton" id="stampAddPage">[ stampAdd ]</div>
-            <div class="headerButton" id="adminPage">[ admin ]</div>
-            <div class="headerButton" id="statisticPage">[ statistic ]</div>
+            <div class="headerButton" id="loginPage"> 로그인 </div>
+            <div class="headerButton" id="stampAddPage"> 메인페이지 </div>
+            <div class="headerButton" id="adminPage"> 관리 </div>
+            <div class="headerButton" id="statisticPage"> 통계 </div>
         </div>
     </section>
     <div id="containerFull">
+        <hr width="80%">
         <section>
             <div class="nameInquire">
+                <% if (storeName) { %>
+                    <p><%= storeName %> 매니저님</p>
+                <% } else { } %>  
+                <% if (isLogin) { %>
                 <form action="/mainStore" method="get">
                     <input type="text" id="nickname" name="nickname" placeholder="닉네임">
                     <input type="submit" value="조회" id="nameInquireButton">
                 </form>
+                <% } else { %>
+                    <p>로그인 해주세요!</p>
+                <% } %>
             </div>
         </section>
+        <hr width="80%">
         <section>
-            <% if (storeName) { %>
-                <p><%= storeName %> 님 환영합니다.</p>
-            <% } else { } %>  
             <div class="info">
                 <div class="searchedNickname">
                     <% if (nickname && nickname.length > 0) { %>
-                        <p>안녕하세요 <%= nickname %> 님 </p>
-                    <% } else { } %>  
+                        <p>손님 <%= nickname %>님, 반갑습니다. </p>
+                    <% } else { } %>
                 </div>
                 <!-- <div class="purchaseHistory">
                     <div id="purchaseHistoryTitle">
@@ -56,34 +62,47 @@
                 </div> -->
             </div>
         </section>
-        <section>
-            <div class="stampContainer">
-                <div class="stampImage"></div>
-                <div class="stampImage"></div>
-                <div class="stampImage"></div>
-                <div class="stampImage"></div>
+        <% if (isLogin) { %>
+            
+                <section>
+                    <div class="stampContainer">
+                        <% if (nickname && nickname.length > 0) { %>
+                            <% for (var i = 0; i < stampNumber; i++) { %>
+                                <div class="stampImage"></div>
+                            <% } %>
+                        <% } else { %>
+                            <p>손님의 이름을 검색해주세요!</p>
+                        <% } %>
+                    </div>
+                </section>
+                <section>
+                    <div class="stampAdd">
+                        <% if (nickname && nickname.length > 0) { %>
+                        <form action="/mainStore/stampAdd" method="">
+                            <input type="text" name="stampAdd" placeholder="구매금액 (원)">
+                            <input type="hidden" name="nickname" value=<%= nickname %>>
+                            <input type="submit" value=" " id="stampAddButton">
+                        </form>
+                        <% } else { %>
 
-                <div class="stampImage"></div>
-                <div class="stampImage"></div>
-                <div class="stampImage"></div>
-                <div class="stampImage"></div>
-            </div>
-        </section>
-        <section>
-            <div class="stampAdd">
-                <form action="" method="">
-                    <input type="text" name="stampAdd" placeholder="구매금액 (원)">
-                    <input type="submit" value="STAMP 추가" id="stampAddButton">
-                </form>
-            </div>
-        </section>
+                        <% } %>
+                    </div>
+                </section>
+                <hr width="80%">
+        <% } else { %>
+            
+        <% } %>
     </div>
     <section>
         <div class="footer">
             <!-- footer content -->
             [ footer content ]
-            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.7457336433786!2d127.07490637636057!3d37.6316683720218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbbd569641237%3A0x7b8fe3317caedc65!2z7ISc7Jq46rO87ZWZ6riw7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1700707178656!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         </div>
     </section>
 </body>
+<script>
+    <% if (alertMessage && alertMessage.length > 0) { %>
+        alert("<%= alertMessage %>");
+    <% } %>
+</script>
 </html>

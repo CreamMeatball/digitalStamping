@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mainCustomer</title>
     <link href="css/default.css" rel="stylesheet"/>
-    <!-- <link href="css/mainStore.css" rel="stylesheet"/> -->
+    <link href="css/mainCustomer.css" rel="stylesheet"/>
     <script src="js/jquery-3.7.1.min.js"></script>
-    <!-- <script src="js/mainStore.js"></script> -->
+    <script src="js/mainCustomer.js"></script>
 </head>
 <body>
     <body>
@@ -17,6 +17,7 @@
             </div>
         </section>
         <div id="containerFull">
+            <hr width="80%">
             <section>
                 <div class="nameInquire">
                     <form action="/mainCustomer" method="get">
@@ -26,28 +27,31 @@
                     </form>
                 </div>
             </section>
+            <hr width="80%">
             <section>
                 <div class="info">
                     <div class="searchedNickname">
                         <% if (nickname && nickname.length > 0) { %>
-                            <p>안녕하세요 <%= nickname %> 님 </p>
-                        <% } else { } %>  
+                            <p>안녕하세요 <%= nickname %> 님. </p>
+                        <% } else { %>
+                            <p>닉네임과 가게명을 검색해주세요!</p>
+                        <% } %>  
+                        <% if (storeName && storeName.length > 0) { %>
+                            <p><%= storeName %> 가게의 스탬프 개수입니다. </p>
+                        <% } else { } %>
                     </div>
                 </div>
             </section>
             <section>
                 <div class="stampContainer">
-                    <div class="stampImage"></div>
-                    <div class="stampImage"></div>
-                    <div class="stampImage"></div>
-                    <div class="stampImage"></div>
-    
-                    <div class="stampImage"></div>
-                    <div class="stampImage"></div>
-                    <div class="stampImage"></div>
-                    <div class="stampImage"></div>
+                    <% for (var i = 0; i < stampNumber; i++) { %>
+                        <div class="stampImage"></div>
+                    <% } %>
                 </div>
             </section>
+            <% if (nickname && nickname.length > 0) { %>
+            <hr width="80%">
+            <% } else { } %>
         </div>
         <section>
             <div class="footer">
@@ -58,9 +62,9 @@
         </section>
     </body>
     <script>
-        <% if (alertMessage && alertMessage.length > 0) { %>
+        <% if (registerMessage && registerMessage.length > 0) { %>
             console.log("ready to create new user alert");
-            var userResponse = confirm("<%= alertMessage %>");
+            var userResponse = confirm("<%= regiterMessage %>");
             if (userResponse) {
                 console.log("User clicked 'OK', create new user.");
                 window.location.href = '/mainCustomer/registerCustomer/?nickname=<%= nickname %>';
@@ -68,6 +72,9 @@
                 console.log("User clicked 'Cancel'.");
                 window.location.href = '/mainCustomer'
             }
+        <% } %>
+        <% if (alertMessage && alertMessage.length > 0) { %>
+            alert("<%= alertMessage %>");
         <% } %>
     </script>
 </body>

@@ -13,6 +13,7 @@ exports.get = async function(req, res) {
     console.log('---mainCustomer---');
     const nickname = req.query.nickname;
     const storeName = req.query.storeName;
+    var alertMessage = "";
     try {
         if (nickname && nickname.length>0) {
             const customer = await Customer.findOne({ nickname : nickname });
@@ -29,7 +30,7 @@ exports.get = async function(req, res) {
                         var visitedStoreIndex = customer.visitedStore.indexOf(storeName);
                         var stampNumber = customer.storeStamp[visitedStoreIndex];
                         console.log('stampNumber : ', stampNumber);
-                        return res.render('mainCustomer', { nickname : customer.nickname, alertMessage : [], stampNumber : stampNumber });
+                        return res.render('mainCustomer', { nickname : customer.nickname, registerMessage : [], stampNumber : stampNumber, storeName : storeName, alertMessage : "" });
                     }
                     else {
                         console.log('not visited store');
@@ -44,22 +45,24 @@ exports.get = async function(req, res) {
                         var visitedStoreIndex = customer.visitedStore.indexOf(storeName);
                         var stampNumber = customer.storeStamp[visitedStoreIndex];
                         console.log('stampNumber : ', stampNumber);
-                        return res.render('mainCustomer', { nickname : customer.nickname, alertMessage : [], stampNumber : stampNumber });
+                        return res.render('mainCustomer', { nickname : customer.nickname, registerMessage : [], stampNumber : stampNumber, storeName : storeName, alertMessage : "" });
                     }
                 }
                 else {
                     // 검색한 store가 없을 경우
                     console.log('cannot find store [', storeName, ']');
-                    return res.render('mainCustomer', { nickname : [], alertMessage : [], stampNumber : 0 });
+                    return res.render('mainCustomer', { nickname : [], registerMessage : [], stampNumber : 0, storeName : [], alertMessage : "검색한 가게 [ " + storeName + " ] 가 없습니다." });
                 }
 
             } else {
+                // customer의 nickname이 해당되는 게 없을 경우
                 console.log('cannot find customer [', nickname, ']');
-                return res.render('mainCustomer', { nickname : nickname, alertMessage: "Cannot find nickname. Do you want to create a new user?", stampNumber : 0 });
+                return res.render('mainCustomer', { nickname : nickname, registerMessage: "닉네임 [ " + nickname + " ] 을 가진 회원을 찾을 수 없습니다. [ " + nickname + " ] 으로 새 계정을 만드시겠습니까?", stampNumber : 0, storeName : [], alertMessage : "" });
             }
         }
 
-        res.render('mainCustomer', { nickname : [], alertMessage : [], stampNumber : 0 });
+        // 기본 render
+        res.render('mainCustomer', { nickname : [], registerMessage : [], stampNumber : 0, storeName : [], alertMessage : "" });
     } catch (err) {
         console.error('mainCustomer failed', err);
         res.status(500).send('Internal Server Error');

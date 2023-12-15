@@ -7,6 +7,6 @@ router.get('/', controller.get);
 
 // router.get('/findCustomer', controller.findCustomer);
 
-router.post('/stampAdd', controller.stampAdd);
+router.get('/stampAdd', controller.stampAdd);
 
 module.exports = router;
