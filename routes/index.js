@@ -26,5 +26,8 @@ router.use('/loginStore', loginStoreRouter);
 const registerStoreRouter = require('./registerStore');
 router.use('/registerStore', registerStoreRouter);
 
+const mainCustomerRouter = require('./mainCustomer');
+router.use('/mainCustomer', mainCustomerRouter);
+
 module.exports = router;
 // exports 하여 server.js에서 사용.

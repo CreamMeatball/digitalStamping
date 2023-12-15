@@ -34,12 +34,6 @@ app.listen(8080, function() {
     console.log('enter in 8080');
 });
 
-// app.get('/mainStore', function(req, res) {
-//     res.sendFile(__dirname + '/public' + '/mainStore.html')
-// })
-
-// mongodb
-
 mongoose.connect('mongodb://localhost:27017/stamping', {
     useNewUrlParser: true } );
 

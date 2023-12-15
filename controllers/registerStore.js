@@ -39,6 +39,12 @@ exports.register = async function(req, res) {
             return res.redirect('/registerStore');
         }
 
+        let store2 = await Store.findOne({ storeName : storeName });
+        if (store2) {
+            console.log("storeName already exists");
+            return res.redirect('/registerStore');
+        }
+
         store = new Store({
             id: id,
             password: hashedPassword,
